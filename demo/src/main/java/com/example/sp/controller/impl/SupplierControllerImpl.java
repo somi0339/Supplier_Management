@@ -11,6 +11,8 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.User;
@@ -29,6 +31,9 @@ public class SupplierControllerImpl implements SupplierController {
     SupplierRepository supplierRepository;
     @Autowired
     SupplierService supplierService;
+
+
+    private final Logger logger= LoggerFactory.getLogger(SupplierControllerImpl.class);
 
 //    @Override
 //    public ResponseEntity<Object> login(User user, HttpServletRequest req) {
@@ -60,6 +65,7 @@ public class SupplierControllerImpl implements SupplierController {
     @Override
         public ResponseEntity<Object> fetchMaster() {
            ResponseEntity<Object> list = supplierService.getMaster();
+           logger.info("get api started");
             return list;
         }
 
